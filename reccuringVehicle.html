@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recurring Vehicle</title>
+</head>
+<body>
+    <form id="recurringVehicleForm">
+        <input type="text" id="vehicleNumber" placeholder="Enter Vehicle Number">
+        <label>Status:</label>
+        <input type="radio" name="status" value="drunk"> Drunk
+        <input type="radio" name="status" value="sober"> Sober
+        <input type="radio" name="status" value="safe"> Safe
+        <button id="saveButton" type="button">Save</button>
+    </form>
+    <a href="check.html">Back to Check</a>
+    <script type="module">
+        const firebaseConfig = {
+            apiKey: "AIzaSyByd9Lfc2BOcTPmZHB_bSMr0p5Aia2k618",
+            authDomain: "rwud-12f59.firebaseapp.com",
+            databaseURL:"https://rwud-12f59-default-rtdb.asia-southeast1.firebasedatabase.app/",
+            projectId: "rwud-12f59",
+            storageBucket: "rwud-12f59.appspot.com",
+            messagingSenderId: "542734380182",
+            appId: "1:542734380182:web:a281271fb7a5ed259ba6b7",
+            measurementId: "G-BWX4MELSPJ"
+        };
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+        
+        /*function attachEventListener() {
+                document.getElementById('saveButton').addEventListener('click', addStatus);
+
+             }*/
+        function addStatus() {
+                // Get form data
+                var vehicleNumber = document.getElementById('vehicleNumber').value;
+                var status = document.querySelector('input[name="status"]:checked').value;
+
+                // Add status to Firebase Realtime Database without replacing existing data
+                firebase.database().ref('vehicles/' + vehicleNumber + '/statuses').push({
+                    status: status,
+                    date: new Date().toISOString()
+                })
+                .then(() => {
+                    alert('Status added successfully');
+                })
+                .catch(error => {
+                    console.error('Error adding status:', error);
+                    alert('Failed to add status. Please try again.');
+                });
+
+                document.getElementById('recurringVehicleForm').reset();
+                console.log("saved");
+        // Attach event listener to button
+            attachEventListener();   
+        }
+        //attachEventListener();
+        function attachEventListener() {
+                document.getElementById('saveButton').addEventListener('click', addStatus);
+        }
+
+    </script>
+    
+    
+</body>
+</html>
