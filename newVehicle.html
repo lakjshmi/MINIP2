@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Vehicle</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <form id="newVehicleForm">
@@ -18,13 +19,13 @@
             <option value="4 wheeler manual">4 wheeler manual</option>
             <option value="Heavy load vehicle">Heavy load vehicle</option>
         </select>
-        <label>Status:</label>
+        <label id="Stat">Status:</label>
         <input type="radio" name="status" value="drunk"> Drunk
         <input type="radio" name="status" value="sober"> Sober
         <input type="radio" name="status" value="safe"> Safe
         <button type="button" onclick="saveNewVehicle()">Save</button>
     </form>
-    <a href="index.html">Back to Check</a>
+    <a href="index.html">Back</a>
     <script type="module">
        
        const firebaseConfig = {
