@@ -64,15 +64,20 @@
       const vehicleRef = ref(database, 'vehicles/' + vehicleNumber);
 
       // Get the data from the referenced location and check if it exists
-      get(vehicleRef)
-        .then(snapshot => {
-          // Redirect based on whether the vehicle exists in the database
-          window.location.href = snapshot.exists() ? 'newVehicle.html' : 'recurringVehicle.htmlv';
-        })
-        .catch(error => {
-          console.error('Error checking vehicle:', error);
-        });
+      
+    get(vehicleRef)
+      .then(snapshot => {
+        if (snapshot.exists()) {
+          window.location.href = 'recurringVehicle.html';
+        } else {
+          window.location.href = 'newVehicle.html';
+        }
+      })
+      .catch(error => {
+        console.error('Error checking vehicle:', error);
+      });
     }
+
 
     // Attach event listener to the initial check button
     document.getElementById('checker').addEventListener('click', checkVehicle);
