@@ -1,0 +1,48 @@
+#vehicleNumber {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#saveButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#saveButton:hover {
+    background-color: #45a049;
+}
+#status-drunk:checked + label {
+    background-color: red;
+    border-color: red;
+    color: white;
+}
+#status-sober:checked + label {
+    background-color: yellow;
+    border-color: yellow;
+    color: black;
+}
+#status-safe:checked + label {
+    background-color: green;
+    border-color: green;
+    color: white;
+}
+.radio-group input[type="radio"] {
+    display: none;
+}
+.radio-group label {
+    width: 30%;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
