@@ -67,7 +67,7 @@
       get(vehicleRef)
         .then(snapshot => {
           // Redirect based on whether the vehicle exists in the database
-          window.location.href = snapshot.exists() ? 'recurringVehicle.html' : 'newVehicle.html';
+          window.location.href = snapshot.exists() ? 'newVehicle.html' : 'recurringVehicle.htmlv';
         })
         .catch(error => {
           console.error('Error checking vehicle:', error);
