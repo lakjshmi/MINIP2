@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Check Vehicle</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recurring Vehicle</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="checkFormatContainer">
-    <input type="text" id="vehicleNumberInput" placeholder="Enter vehicle number"><br>
-    <button id="checker">Check Format</button>
-  </div>
+    
+    <div class="card">
+        <h1>Vehicle Exists Already!</h1><br>        
 
-  <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js" defer></script>
-  <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js" defer></script>
-
-  <script type="module">
-    const firebaseConfig = {
+        <form id="recurringVehicleForm">
+            <label for="vehicleNumber">Vehicle Number:</label>
+            <input type="text" id="vehicleNumber" placeholder="Enter Vehicle Number"><br>
+            
+            <label>Status:</label>
+            <div>
+                <input type="radio" id="status-drunk" name="status" value="drunk" class="circleRadio">
+                <label for="status-drunk" class="circleLabel">Drunk</label>
+            </div>
+            <div>
+                <input type="radio" id="status-sober" name="status" value="sober" class="circleRadio">
+                <label for="status-sober" class="circleLabel">Sober</label>
+            </div>
+            <div>
+                <input type="radio" id="status-safe" name="status" value="safe" class="circleRadio">
+                <label for="status-safe" class="circleLabel">Safe</label>
+            </div>
+    
+            <button class="Newsaver" id="saveButton" type="button">Save</button>
+        </form>
+        <button class="BB" id="backButton" type="button">Back</button>
+    </div>
+    
+    
+    
+    <script type="module">
+        const firebaseConfig = {
             apiKey: "AIzaSyByd9Lfc2BOcTPmZHB_bSMr0p5Aia2k618",
             authDomain: "rwud-12f59.firebaseapp.com",
             databaseURL:"https://rwud-12f59-default-rtdb.asia-southeast1.firebasedatabase.app/",
@@ -27,41 +48,49 @@
             measurementId: "G-BWX4MELSPJ"
         };
 
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const database = getDatabase(app);
-
-    document.getElementById('checker').addEventListener('click', checkVehicle);
-
-    function checkVehicle() {
-      const vehicleNumber = document.getElementById('vehicleNumberInput').value;
-      const regex = /^[A-Z]{2}\d{2}[A-Z]{2}\d{4}$/;
-
-      if (regex.test(vehicleNumber)) {
-        checkIfOldOrNew(vehicleNumber);
-      } else {
-        alert('Invalid Vehicle, Try Again.');
-        document.getElementById('vehicleNumberInput').value = '';
-      }
-    }
-
-    function checkIfOldOrNew(vehicleNumber) {
-      const vehicleRef = ref(database, 'vehicles/' + vehicleNumber);
-
-      get(vehicleRef).then(snapshot => {
-        if (snapshot.exists()) {
-          window.location.href = 'reccuringVehicle.html?vehicleNumber=' + vehicleNumber;
-        } else {
-          window.location.href = 'newVehicle.html?vehicleNumber=' + vehicleNumber;
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+        document.getElementById('backButton').addEventListener('click',function() {
+            window.location.href = 'index.html';
+        });
+        // Function to get URL parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
         }
-      }).catch(error => {
-        console.error('Error checking vehicle:', error);
-      });
-    }
-  </script>
+
+        // Auto-fill the vehicle number if available in URL
+        const vehicleNumber = getQueryParam('vehicleNumber');
+        if (vehicleNumber) {
+            document.getElementById('vehicleNumber').value = vehicleNumber;
+        }
+
+        function addStatus() {
+            const vehicleNumber = document.getElementById('vehicleNumber').value;
+            const status = document.querySelector('input[name="status"]:checked').value;
+
+            const vehicleStatusRef = ref(database, 'vehicles/' + vehicleNumber + '/statuses');
+            push(vehicleStatusRef, {
+                status: status,
+                date: new Date().toISOString()
+            })
+            .then(() => {
+                alert('Status added successfully');
+            })
+            .catch(error => {
+                console.error('Error adding status:', error);
+                alert('Failed to add status. Please try again.');
+            });
+
+            document.getElementById('recurringVehicleForm').reset();
+        }
+
+        document.getElementById('saveButton').addEventListener('click', addStatus);
+    </script>
 </body>
 </html>
