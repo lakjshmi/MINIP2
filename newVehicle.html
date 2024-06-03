@@ -7,27 +7,50 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <form id="newVehicleForm">
-        <input type="text" id="vehicleNumber" placeholder="Enter Vehicle Number">
-        <input type="text" id="dlNumber" placeholder="Enter DL Number">
-        <input type="text" id="name" placeholder="Enter Name">
-        <select id="vehicleType">
-            <option value="">Select Vehicle Type</option>
-            <option value="2 wheeler with gear">2 wheeler with gear</option>
-            <option value="2 wheeler without gear">2 wheeler without gear</option>
-            <option value="4 wheeler Automatic">4 wheeler Automatic</option>
-            <option value="4 wheeler manual">4 wheeler manual</option>
-            <option value="Heavy load vehicle">Heavy load vehicle</option>
-        </select>
-        <label id="Stat">Status:</label>
-        <input type="radio" name="status" value="drunk"> Drunk
-        <input type="radio" name="status" value="sober"> Sober
-        <input type="radio" name="status" value="safe"> Safe
-        <button type="button" onclick="saveNewVehicle()">Save</button>
-    </form>
-    <a href="index.html">Back</a>
+    <div class="card">
+        <h1>It's A New Vehicle</h1>
+    <div id="NewV">
+        <form id="newVehicleForm">
+            <input type="text" id="vehicleNumber" placeholder="Enter Vehicle Number">
+            <input type="text" id="dlNumber" placeholder="Enter DL Number">
+            <input type="text" id="name" placeholder="Enter Name">
+            <select id="vehicleType">
+                <option value="">Select Vehicle Type</option>
+                <option value="2 wheeler with gear">2 wheeler with gear</option>
+                <option value="2 wheeler without gear">2 wheeler without gear</option>
+                <option value="4 wheeler Automatic">4 wheeler Automatic</option>
+                <option value="4 wheeler manual">4 wheeler manual</option>
+                <option value="Heavy load vehicle">Heavy load vehicle</option>
+            </select>
+            <br>
+            <label id="Stat">Status:</label>
+            <div>
+                <input type="radio" name="status" value="drunk" id="dd" class="satt">
+                <label for="dd" class="circleC">Drunk</label>
+            </div>
+            <div>
+                <input type="radio" name="status" value="sober" id="so" class="satt">
+                <label for="so" class="circleC">Sober</label>
+            </div>
+            <div>
+                <input type="radio" name="status" value="safe" id="sa" class="satt">
+                <label for="sa" class="circleC">Safe</label>
+            </div>
+            
+            <div>
+                <button  class="Newsaver" type="button" onclick="saveNewVehicle()">Save</button>
+            </div>
+            
+        </form>
+        <button id="backButton" type="button">Back</button>
+    </div>
+    </div>
+    
+    
     <script type="module">
-       
+       document.getElementById('backButton').addEventListener('click',function() {
+            window.location.href = 'index.html';
+        });
        const firebaseConfig = {
             apiKey: "AIzaSyByd9Lfc2BOcTPmZHB_bSMr0p5Aia2k618",
             authDomain: "rwud-12f59.firebaseapp.com",
