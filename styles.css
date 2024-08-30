@@ -1,0 +1,226 @@
+body {
+    color: #7d00ae;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 5%;
+    background-color: #f0f0f0;
+}
+
+#recurringVehicleForm{
+    color: #7d00ae;
+    font-weight: bold;
+}
+#newVehicleForm{
+    color: #7d00ae;
+    font-weight: bold;
+}
+
+#NewV{
+    display: inline-box;
+    color: #7d00ae;
+    font-weight: bold;
+}
+.radio-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circleRadio{
+    display: none; /* Hide the default radio button */
+}
+.satt{
+    display: none;
+}
+
+/*save button of reccuring */
+.Newsaver{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 60px;
+    border-radius:30px ;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 10px;
+    background-color: #7d00ae;
+    color: #fff;
+}
+/*back button of reccuring*/
+.BB{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 60px;
+    border-radius:30px ;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+   
+    color: #7d00ae;
+    background-color: #fff;
+}
+#backButton{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 60px;
+    border-radius:30px ;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+   
+    color: #7d00ae;
+    background-color: #fff;
+}
+
+.circleLabel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+}
+.circleC{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+}
+
+#checker{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin: 20px 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    background-color: #7d00ae;
+    color:#fff;
+    padding: 20px;
+}
+
+/* Style for the "Drunk" button */
+#status-drunk + .circleLabel{
+    background-color: #ff4d4d;
+    color: #000;
+    font-weight: bold;
+    border: 2px solid #c11a1a;
+}
+/* Style for the "Drunk" button */
+#dd + .circleC{
+    background-color: #ff4d4d;
+    color: #000;
+    font-weight: bold;
+    border: 2px solid #c11a1a;
+}
+
+/* Style for the "Sober" button */
+#status-sober + .circleLabel{
+    background-color: #4caf50;
+    color: #000;
+    font-weight: bold;
+    border: 2px solid #03682a;
+}
+#so + .circleC {
+    background-color: #4caf50;
+    color: #000;
+    font-weight: bold;
+    border: 2px solid #03682a;
+}
+/* Style for the "Safe" button */
+#status-safe + .circleLabel{
+    background-color: #e1a100;
+    color: #000;
+    font-weight: bold;
+    border: 2px solid #a77904;
+}
+#sa + .circleC {
+    background-color: #e1a100;
+    color: #000;
+    font-weight: bold;
+    border: 2px solid #a77904;
+}
+
+/* Highlight the selected button */
+#status-drunk:checked + .circleLabel {
+    color: #000; /* Change text color */
+    border-color:#5b027f ; /* Change border color */
+    font-weight: bold;
+    border-width: 4px;
+}
+#status-sober:checked + .circleLabel {
+    color: #000; /* Change text color */
+    border-color:#5b027f ; /* Change border color */
+    font-weight: bold;
+    border-width: 4px;
+}
+#status-safe:checked + .circleLabel {
+    color: #000; /* Change text color */
+    border-color:#5b027f ; /* Change border color */
+    font-weight: bold;
+    border-width: 4px;
+}
+/* Highlight the selected button */
+
+#dd:checked + .circleC {
+    /*background-color: #7d00ae;  Change background color */
+    color: #000; /* Change text color */
+    border-color:#5b027f ; /* Change border color */
+    font-weight: bold;
+    border-width: 4px;
+}
+#so:checked + .circleC {
+    /*background-color: #7d00ae; /* Change background color */
+    color: #000; /* Change text color */
+    border-color:#5b027f ; /* Change border color */
+    font-weight: bold;
+    border-width: 4px;
+}
+#sa:checked + .circleC {
+    /*background-color: #7d00ae; /* Change background color */
+    color: #000; /* Change text color */
+    border-color:#5b027f ; /* Change border color */
+    font-weight: bold;
+    border-width: 4px;
+}
+
+.h1{
+    font-size: 1em;
+     
+}
+
+.card {
+        display: flex;
+        
+        
+        flex-direction: column;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        
+    
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    }
+    
